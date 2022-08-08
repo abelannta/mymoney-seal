@@ -1,19 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import DashboarPage from "./component/dashboard/dashboard-page";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          MyMoney Apps
-        </p>
-        <a>
-          SEAL
-        </a>
-      </header>
-    </div>
+    <DashboarPage/>
   );
 }
 
