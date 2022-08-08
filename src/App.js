@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-import DashboarPage from "./component/dashboard/dashboard-page";
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/login/login';
 
 function App() {
   return (
-    <DashboarPage/>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </div>
   );
 }
 
