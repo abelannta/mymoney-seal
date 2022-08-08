@@ -8,7 +8,8 @@
 form{
     background-color: white;
     padding: 20px 50px;
-    border-radius: 5px;
+    border-radius: 10px;
+    width: 500px;
 }
 button{
     justify-content: center;
@@ -16,9 +17,27 @@ button{
     height: 45px;
     padding: 0px;
     border: none;
-    border-radius: 20;
+    border-radius: 20px;
     color: white;
     font-weight: bold;
     font-size: 18px;
     background-color: rgb(87, 173, 243);
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+p{
+    color: rgba(0, 0, 0, 0.486);
+}
+
+.optionLogin{
+    display: flex;
+    flex-direction: row;
+}
+
+.forgotPass{
+    display: flex;
+    float: right;
+    padding-top: 4px;
+    margin-left: 160px;
+    justify-content: right;
 }

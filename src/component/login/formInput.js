@@ -1,11 +1,11 @@
 import "../../component/login/formInput.css"
 
-function FormInput(props){
+function FormInput(props) {
+    const { label, onChange, id, ...inputProps } = props;
     return (
         <div className="formInput">
-            <input 
-            name={props.name}
-            placeholder={props.placeholder}/>
+            <label className="label">{label}</label>
+            <input {...inputProps} onChange={onChange} />
         </div>
     )
 }

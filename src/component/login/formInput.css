@@ -3,3 +3,13 @@ input{
     margin: 10px;
     border-radius: 10px;
 }
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+.label{
+    float: left;
+    display: flex;
+    padding: 0px 15px;
+}
