@@ -1,11 +1,11 @@
 import { React, useState } from "react";
 import { Container, Form, Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../login/login.css"
+import "../register/register.css"
 import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
 
-function Login() {
+function Register() {
     const styleLink = {
         textDecoration: 'none',
         color: '#000000',
@@ -20,17 +20,24 @@ function Login() {
     const inputs = [
         {
             id: 1,
-            name: "email",
+            name: "name",
             type: "text",
-            placeholder: "enter your email",
-            label: "email"
+            placeholder: "Namaku Namamu",
+            label: "Full Name"
         },
         {
             id: 2,
+            name: "email",
+            type: "text",
+            placeholder: "example@gmail.com",
+            label: "Email"
+        },
+        {
+            id: 3,
             name: "password",
             type: "password",
-            placeholder: "********",
-            label: "password"
+            placeholder: "**********",
+            label: "Password"
         }
     ];
 
@@ -47,7 +54,7 @@ function Login() {
             <Form onSubmit={handleSubmit}>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
-                <h1>Welcome back</h1>
+                <h1>Create New Account</h1>
                 <p>Welcome back! Please enter your details</p>
                 </div>
                 {inputs.map((input) => (
@@ -59,20 +66,7 @@ function Login() {
                     />
                 ))}
 
-                {['checkbox'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`checkbox`}
-                            label={`Remember for 30 Days`}
-                        />
-                        <Link style={styleLink} to="/" className="forgotPass">Forgot password?</Link>
-                    </div>
-                ))}
-
-
-
-                <Button>Sign in</Button>
+                <Button>Create Account</Button>
                 
                 <div className="footer">
                 <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
@@ -84,4 +78,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;
