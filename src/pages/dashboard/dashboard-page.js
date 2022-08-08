@@ -1,10 +1,10 @@
-import IncomeCard from "./component/income-card";
-import ExpenseCard from "./component/expense-card";
-import WalletCard from "./component/wallet-card";
-import FinancialChart from "./component/financial-chart";
-import LastTransaction from "./component/last-transaction";
+import IncomeCard from "../../component/dashboard/income-card";
+import ExpenseCard from "../../component/dashboard/expense-card";
+import WalletCard from "../../component/dashboard/wallet-card";
+import FinancialChart from "../../component/dashboard/financial-chart";
+import LastTransaction from "../../component/dashboard/last-transaction";
 
-const DashboarPage = () => {
+const DashboardPage = () => {
     return(
         <>
             <div style={{backgroundColor: "#F0F0F0"}}>
@@ -37,4 +37,4 @@ const DashboarPage = () => {
     )
 }
 
-export default DashboarPage
+export default DashboardPage
