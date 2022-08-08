@@ -69,7 +69,7 @@ function Register() {
                 <Button>Create Account</Button>
                 
                 <div className="footer">
-                <p>Dont have an account? <Link style={styleLink} to="/">Sign up for free</Link></p>
+                <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
                 </div>
             </Form>
 
