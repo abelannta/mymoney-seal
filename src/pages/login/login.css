@@ -4,6 +4,7 @@
     justify-content: center;
     height: 100vh;
     background-color: rgb(66, 165, 247); 
+    text-align: center;
 }
 form{
     background-color: white;
