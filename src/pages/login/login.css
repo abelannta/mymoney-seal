@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(87, 173, 243); 
+    background-color: rgb(66, 165, 247); 
 }
 form{
     background-color: white;
@@ -41,3 +41,4 @@ p{
     margin-left: 160px;
     justify-content: right;
 }
+
