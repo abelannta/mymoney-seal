@@ -6,7 +6,7 @@ input{
 .formInput{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 550px;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
@@ -16,4 +16,21 @@ input{
     display: flex;
     margin-bottom: 5px;
     padding-left: 5px;
+}
+span{
+    text-align: left;
+    justify-content: left;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+input:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"] ~ span{
+    display: block;
+    margin-left: 8px;
 }
