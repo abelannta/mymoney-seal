@@ -21,16 +21,20 @@ function Login() {
         {
             id: 1,
             name: "email",
-            type: "text",
-            placeholder: "enter your email",
-            label: "email"
+            type: "email",
+            placeholder: "Masukkan Email Anda",
+            errorMessage:"Email tidak valid!",
+            label: "Email",
+            required: true,
         },
         {
             id: 2,
             name: "password",
             type: "password",
             placeholder: "********",
-            label: "password"
+            errorMessage:"Kata Sandi Salah",
+            label: "Kata Sandi",
+            required: true,
         }
     ];
 
@@ -47,8 +51,8 @@ function Login() {
             <Form onSubmit={handleSubmit}>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
-                <h1>Welcome back</h1>
-                <p>Welcome back! Please enter your details</p>
+                <h1>Selamat Datang!</h1>
+                <p>Selamat datang! Silahkan masukkan detail Anda</p>
                 </div>
                 {inputs.map((input) => (
                     <FormInput
@@ -64,18 +68,18 @@ function Login() {
                         <Form.Check
                             type={type}
                             id={`checkbox`}
-                            label={`Remember for 30 Days`}
+                            label={`Ingatkan saya`}
                         />
-                        <Link style={styleLink} to="/" className="forgotPass">Forgot password?</Link>
+                        <Link style={styleLink} to="/" className="forgotPass">Lupa Kata Sandi?</Link>
                     </div>
                 ))}
 
 
 
-                <Button>Sign in</Button>
+                <Button>Masuk</Button>
                 
                 <div className="footer">
-                <p>Dont have an account? <Link style={styleLink} to="/">Sign up for free</Link></p>
+                <p>Belum punya akun?<Link style={styleLink} to="/">Daftar sekarang</Link></p>
                 </div>
             </Form>
 
