@@ -9,8 +9,8 @@ import Sidebar from './component/navigation/sidebar';
 function App() {
   return (
     <div className="App">
-      {/* <Navbar />
-      <Sidebar /> */}
+      <Navbar />
+      <Sidebar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register/>}/>
