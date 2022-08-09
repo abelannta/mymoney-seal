@@ -38,8 +38,9 @@ p{
     display: flex;
 }
 .forgotPass{
-    margin-left: 250px;
-    justify-content: right;
+    display: flex;
     float: right;
+    text-align: right;
+    justify-content: right;
 }
 
