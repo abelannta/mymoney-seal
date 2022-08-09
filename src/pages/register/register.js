@@ -1,11 +1,12 @@
 import { React, useState } from "react";
-import { Container, Form, Button} from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../login/login.css"
+import "../register/register.css"
 import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
+import { FiArrowLeft } from "react-icons/fi";
 
-function Login() {
+function Register() {
     const styleLink = {
         textDecoration: 'none',
         color: '#000000',
@@ -20,21 +21,24 @@ function Login() {
     const inputs = [
         {
             id: 1,
-            name: "email",
-            type: "email",
-            placeholder: "Masukkan Email Anda",
-            errorMessage:"Email tidak valid!",
-            label: "Email",
-            required: true,
+            name: "name",
+            type: "text",
+            placeholder: "Namaku Namamu",
+            label: "Full Name"
         },
         {
             id: 2,
+            name: "email",
+            type: "text",
+            placeholder: "example@gmail.com",
+            label: "Email"
+        },
+        {
+            id: 3,
             name: "password",
             type: "password",
-            placeholder: "********",
-            errorMessage:"Kata Sandi Salah",
-            label: "Kata Sandi",
-            required: true,
+            placeholder: "**********",
+            label: "Password"
         }
     ];
 
@@ -47,12 +51,17 @@ function Login() {
     };
 
     return (
-        <Container className="LoginPage" fluid="true">
+        <Container className="RegisterPage" fluid="true">
             <Form onSubmit={handleSubmit}>
+                <div className="back-button">
+                    <Link style={styleLink} to="/">
+                        <FiArrowLeft /> Sign In
+                    </Link>
+                </div>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
-                <h1>Selamat Datang!</h1>
-                <p>Selamat datang! Silahkan masukkan detail Anda</p>
+                    <h1>Create New Account</h1>
+                    <p>Welcome back! Please enter your details</p>
                 </div>
                 {inputs.map((input) => (
                     <FormInput
@@ -63,25 +72,10 @@ function Login() {
                     />
                 ))}
 
-                {['checkbox'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`checkbox`}
-                            label={`Ingatkan saya`}
-                        />
-                        <Link style={styleLink} to="/" className="forgotPass">Lupa Kata Sandi?</Link>
-                    </div>
-                ))}
+                <Button>Create Account</Button>
 
-
-
-                <Button>Masuk</Button>
-                
                 <div className="footer">
-
-                <p>Belum punya akun?<Link style={styleLink} to="/">Daftar sekarang</Link></p>
-
+                    <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
                 </div>
             </Form>
 
@@ -90,4 +84,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;
