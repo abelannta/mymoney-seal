@@ -6,10 +6,16 @@ import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
 
 function Login() {
+    const styleLink1 = {
+        textDecoration: 'none',
+        color: '#000000',
+        fontWeight: 'bold',
+        marginLeft: '80px'
+    }
     const styleLink = {
         textDecoration: 'none',
         color: '#000000',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     }
 
     const [values, setValues] = useState({
@@ -70,7 +76,8 @@ function Login() {
                             id={`checkbox`}
                             label={`Ingatkan saya`}
                         />
-                        <Link style={styleLink} to="/" className="forgotPass">Lupa Kata Sandi?</Link>
+
+                        <div className="forgotPass"><Link style={styleLink1} to="/" >Lupa Kata Sandi?</Link></div>
                     </div>
                 ))}
 
@@ -80,7 +87,7 @@ function Login() {
                 
                 <div className="footer">
 
-                <p>Belum punya akun?<Link style={styleLink} to="/">Daftar sekarang</Link></p>
+                <p>Belum punya akun?<Link style={styleLink} to="/register">Daftar sekarang</Link></p>
 
                 </div>
             </Form>

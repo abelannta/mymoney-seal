@@ -14,6 +14,7 @@ function Register() {
     }
 
     const [values, setValues] = useState({
+
         email: "",
         password: "",
     });
@@ -24,21 +25,27 @@ function Register() {
             name: "name",
             type: "text",
             placeholder: "Namaku Namamu",
-            label: "Full Name"
+            errorMessage:"",
+            label: "Nama Lengkap",
+            required: true,
         },
         {
             id: 2,
             name: "email",
-            type: "text",
+            type: "email",
             placeholder: "example@gmail.com",
-            label: "Email"
+            errorMessage:"Email tidak valid!",
+            label: "Email",
+            required: true,
         },
         {
             id: 3,
             name: "password",
             type: "password",
             placeholder: "**********",
-            label: "Password"
+            errorMessage:"Panjangnya minimal harus 8 karakter!",
+            label: "Kata Sandi",
+            required: true,
         }
     ];
 
@@ -55,13 +62,13 @@ function Register() {
             <Form onSubmit={handleSubmit}>
                 <div className="back-button">
                     <Link style={styleLink} to="/">
-                        <FiArrowLeft /> Sign In
+                        <FiArrowLeft /> Masuk
                     </Link>
                 </div>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
-                    <h1>Create New Account</h1>
-                    <p>Welcome back! Please enter your details</p>
+                    <h1>Buat Akun Baru</h1>
+                    <p>Selamat datang! Silahkan masukkan detail Anda</p>
                 </div>
                 {inputs.map((input) => (
                     <FormInput
@@ -72,11 +79,9 @@ function Register() {
                     />
                 ))}
 
-                <Button>Create Account</Button>
+                <Button>Daftar</Button>
 
-                <div className="footer">
-                    <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
-                </div>
+                
             </Form>
 
         </Container>
