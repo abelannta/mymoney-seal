@@ -1,9 +1,10 @@
 import { React, useState } from "react";
-import { Container, Form, Button} from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../register/register.css"
 import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
+import { FiArrowLeft } from "react-icons/fi";
 
 function Register() {
     const styleLink = {
@@ -50,12 +51,17 @@ function Register() {
     };
 
     return (
-        <Container className="LoginPage" fluid="true">
+        <Container className="RegisterPage" fluid="true">
             <Form onSubmit={handleSubmit}>
+                <div className="back-button">
+                    <Link style={styleLink} to="/">
+                        <FiArrowLeft /> Sign In
+                    </Link>
+                </div>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
-                <h1>Create New Account</h1>
-                <p>Welcome back! Please enter your details</p>
+                    <h1>Create New Account</h1>
+                    <p>Welcome back! Please enter your details</p>
                 </div>
                 {inputs.map((input) => (
                     <FormInput
@@ -67,9 +73,9 @@ function Register() {
                 ))}
 
                 <Button>Create Account</Button>
-                
+
                 <div className="footer">
-                <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
+                    <p>Dont have an account? <Link style={styleLink} to="/register">Sign up for free</Link></p>
                 </div>
             </Form>
 

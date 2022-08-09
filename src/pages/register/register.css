@@ -1,4 +1,4 @@
-.LoginPage{
+.RegisterPage{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
 }
 form{
     background-color: white;
-    padding: 20px 50px;
+    padding: 10px 60px;
     border-radius: 10px;
 }
 Button{
@@ -41,5 +41,11 @@ p{
     margin-left: 170px;
     justify-content: right;
     float: right;
+}
+.back-button{
+    text-align: left;
+    justify-content: left;
+    font-weight: bold;
+
 }
 
