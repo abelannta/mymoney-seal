@@ -23,33 +23,33 @@ const LastTransaction = () => {
 
     return (
         <>
-            <div className="card bg-white border-white p-2"
+            <div className="card p-2 card-shadow"
                  style={{width: "18 rem", overflow: "hidden", borderRadius: 10}}>
-                <div className="card-body bg-white">
-                    <div className="d-flex justify-content-between bg-white">
-                        <div className="bg-white">
-                            <h5 className="card-title bg-white fw-bold m-0" style={{fontSize: 18}}>Transaksi
+                <div className="card-body">
+                    <div className="d-flex justify-content-between">
+                        <di>
+                            <h5 className="card-title fw-bold m-0" style={{fontSize: 18}}>Transaksi
                                 Terakhir</h5>
-                        </div>
-                        <div className="bg-white">
-                            <h5 className="card-title bg-white fw-bold m-0" role="button"
+                        </di>
+                        <div>
+                            <h5 className="card-title fw-bold m-0" role="button"
                                 style={{fontSize: 14, color: "#3F8DFD"}}>Lihat Semua ></h5>
                         </div>
                     </div>
                     <table className="table mt-4">
                         <tr>
-                            <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 12}}>Kategori</td>
-                            <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 12}}>Tanggal</td>
-                            <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 12}}>Keterangan</td>
-                            <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 12}}>Jumlah</td>
+                            <td className="fw-bold" style={{color: "#929EAE", fontSize: 12}}>Kategori</td>
+                            <td className="fw-bold" style={{color: "#929EAE", fontSize: 12}}>Tanggal</td>
+                            <td className="fw-bold" style={{color: "#929EAE", fontSize: 12}}>Keterangan</td>
+                            <td className="fw-bold" style={{color: "#929EAE", fontSize: 12}}>Jumlah</td>
                         </tr>
                         {data?.map((item) => (
                             <>
                                 <tr>
-                                    <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.category}</td>
-                                    <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.date}</td>
-                                    <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.desc}</td>
-                                    <td className="bg-white" style={{fontWeight: 600, color: "#FF4343", fontSize: 14}}>{item.total}</td>
+                                    <td style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.category}</td>
+                                    <td style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.date}</td>
+                                    <td style={{fontWeight: 600, color: "#1B212D", fontSize: 14}}>{item.desc}</td>
+                                    <td style={{fontWeight: 600, color: "#FF4343", fontSize: 14}}>{item.total}</td>
                                 </tr>
                             </>
                         ))}
