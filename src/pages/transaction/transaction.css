@@ -1,6 +1,7 @@
 .transaction-container {
     background: #f0f0f0;
     padding: 90px 25px;
+    min-height: 100vh;
 }
 
 .search-input {
