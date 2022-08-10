@@ -1,0 +1,73 @@
+.transaction-container {
+    background: #f0f0f0;
+    padding: 90px 25px;
+}
+
+.search-input {
+    background: #F8F8F8;
+    border: 1px solid #D3D3D3;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 17px;
+}
+
+.add-btn {
+    width: 150px;
+    height: 35px;
+    background: #3F8DFD;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 21px;
+    color: #FAFAFA;
+
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #1f70e2;
+}
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.trans-btn {
+    border-radius: 4px;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    color: #FFFFFF;
+}
+
+.trans-btn.lihat {
+    background: #3F8DFD;
+    margin-right: 10px;
+}
+
+.trans-btn.lihat:hover {
+    background: #1f70e2;
+}
+
+.trans-btn.hapus {
+    background: #FF4343;
+}
+
+.trans-btn.hapus:hover {
+    background: #d31313;
+}
