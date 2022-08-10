@@ -143,28 +143,28 @@ const FinancialChart = () => {
 
     return (
         <>
-            <div className="card bg-white border-white p-2"
+            <div className="card p-2 card-shadow"
                  style={{width: "18 rem", overflow: "hidden", borderRadius: 10}}>
-                <div className="card-body bg-white">
-                    <div className="d-flex justify-content-between bg-white mb-4">
+                <div className="card-body">
+                    <div className="d-flex justify-content-between mb-4">
                         <div className="bg-white">
-                            <h5 className="card-title bg-white fw-bold m-0" style={{fontSize: 18}}>Arus Keuangan</h5>
+                            <h5 className="card-title fw-bold m-0" style={{fontSize: 18}}>Arus Keuangan</h5>
                         </div>
-                        <div className="bg-white">
-                            <div className="d-flex justify-content-between bg-white">
-                                <div className="bg-white mx-2">
-                                    <h5 className="card-title bg-white fw-normal m-0 mt-1"
+                        <div>
+                            <div className="d-flex justify-content-between">
+                                <div className="mx-2">
+                                    <h5 className="card-title fw-normal m-0 mt-1"
                                         style={{fontSize: 12, color: "#1B212D"}}>
-                                        <img className="bg-white mx-1 my-auto " src="/income-dot.png" alt=""/>Pemasukan
+                                        <img className="mx-1 my-auto " src="/income-dot.png" alt=""/>Pemasukan
                                     </h5>
                                 </div>
-                                <div className="bg-white mx-2">
-                                    <h5 className="card-title bg-white fw-normal m-0 mt-1"
+                                <div className="mx-2">
+                                    <h5 className="card-title fw-normal m-0 mt-1"
                                         style={{fontSize: 12, color: "#1B212D"}}>
-                                        <img className="bg-white mx-1 my-auto" src="/expense-dot.png" alt=""/>Pengeluaran
+                                        <img className="mx-1 my-auto" src="/expense-dot.png" alt=""/>Pengeluaran
                                     </h5>
                                 </div>
-                                <div className="bg-white mx-2">
+                                <div className="mx-2">
                                     <select className="form-select form-select-sm border-0"
                                             style={{backgroundColor: "#F8F8F8"}} aria-label="2022">
                                         <option value="1">2022</option>
