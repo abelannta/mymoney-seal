@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import "../register/register.css"
 import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
@@ -13,11 +14,31 @@ function Register() {
         fontWeight: 'bold'
     }
 
+    const [alert, setAlert] = useState("")
+    const [redirect, setRedirect] = useState(false)
+
     const [values, setValues] = useState({
 
+        name: "",
         email: "",
         password: "",
     });
+
+    const submitSignUp = () => {
+        const data = values
+        axios.post('https://be-money-management.herokuapp.com/api/register', data).then(result => {
+            if (result) {
+                if (result.data) {
+                    setValues('')
+                    setAlert(result.data.message)
+                    setTimeout(() => {
+                        setAlert('')
+                    }, 3000)
+                    setRedirect(true)
+                }
+            }
+        })
+    }
 
     const inputs = [
         {
@@ -25,7 +46,7 @@ function Register() {
             name: "name",
             type: "text",
             placeholder: "Namaku Namamu",
-            errorMessage:"",
+            errorMessage: "Nama tidak boleh kosong",
             label: "Nama Lengkap",
             required: true,
         },
@@ -34,7 +55,7 @@ function Register() {
             name: "email",
             type: "email",
             placeholder: "example@gmail.com",
-            errorMessage:"Email tidak valid!",
+            errorMessage: "Email tidak valid!",
             label: "Email",
             required: true,
         },
@@ -43,13 +64,13 @@ function Register() {
             name: "password",
             type: "password",
             placeholder: "**********",
-            errorMessage:"Panjangnya minimal harus 8 karakter!",
+            errorMessage: "Panjangnya minimal harus 8 karakter!",
             label: "Kata Sandi",
             required: true,
         }
     ];
 
-    const handleSubmit = (e) => {
+    const onRegister = (e) => {
         e.preventDefault();
     };
 
@@ -59,7 +80,19 @@ function Register() {
 
     return (
         <Container className="RegisterPage" fluid="true">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={onRegister}>
+                {
+                    alert && (
+                        <div className="alert alert-primary">
+                            <p>User berhasil bisa didaftarkan!</p>
+                        </div>
+                    )
+                }
+                {/* {
+                    redirect && (
+                        <Navigate to="/" />
+                    )
+                } */}
                 <div className="back-button">
                     <Link style={styleLink} to="/">
                         <FiArrowLeft /> Masuk
@@ -79,9 +112,9 @@ function Register() {
                     />
                 ))}
 
-                <Button>Daftar</Button>
+                <Button onClick={submitSignUp}>Daftar</Button>
 
-                
+
             </Form>
 
         </Container>
