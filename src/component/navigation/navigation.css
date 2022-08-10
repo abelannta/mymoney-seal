@@ -38,6 +38,10 @@
 }
 
 .menu-box:hover {
+    padding-left: 20px;
+}
+
+.menu-box.active {
     color: #FFFFFF;
     background: #3F8DFD;
     border-radius: 8px;
@@ -81,7 +85,7 @@
 }
 
 .menu-account {
-    width: 190px;
+    width: fit-content;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
@@ -95,6 +99,8 @@
     display: flex;
     align-items: center;
     color: #929EAE;
+
+    margin-right: 20px;
 }
 
 .profile-img {

@@ -60,6 +60,14 @@
     margin-right: 10px;
 }
 
+.trans-btn.lihat:hover {
+    background: #1f70e2;
+}
+
 .trans-btn.hapus {
     background: #FF4343;
+}
+
+.trans-btn.hapus:hover {
+    background: #d31313;
 }
