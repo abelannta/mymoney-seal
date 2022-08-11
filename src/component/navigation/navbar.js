@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function Navbar({route}) {
-
+export default function Navbar({route, userData}) {
   return (
     <>
         <div className='navbar-container'>
@@ -17,7 +16,7 @@ export default function Navbar({route}) {
                         <div className='profile-img'>
                             <img src='avatar.png' alt='img' />
                         </div>
-                        <div className='profile-name'>Abel Ananta Putra</div>
+                        <div className='profile-name'>{userData?.name}</div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Container, Form, Button} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import "../login/login.css"
 import FormInput from "../../component/login/formInput"
 import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
@@ -18,10 +19,25 @@ function Login() {
         fontWeight: 'bold',
     }
 
+    const [redirect, setRedirect] = useState(false)
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
+
+    // State Data User
+  const [user, setUser] = useState(localStorage.getItem('user') || []);
+
+    const submitLogin = () => {
+        const data = values
+        axios.post('https://be-money-management.herokuapp.com/api/login', data).then(result => {
+            if(result){
+                localStorage.setItem('token', result.data.token)
+                localStorage.setItem('user', JSON.stringify(result.data.user));
+                setRedirect(true)
+            }
+        })
+    }
 
     const inputs = [
         {
@@ -54,6 +70,11 @@ function Login() {
 
     return (
         <Container className="LoginPage" fluid="true">
+            {
+                redirect && (
+                    <Navigate to="/dashboard"/>
+                )
+            }
             <Form onSubmit={handleSubmit}>
                 <img src={LOGOMYMONEY} className="brand-image" alt="Logo MyMoney" />
                 <div className="title">
@@ -83,7 +104,7 @@ function Login() {
 
 
 
-                <Button>Masuk</Button>
+                <Button onClick={submitLogin}>Masuk</Button>
                 
                 <div className="footer">
 

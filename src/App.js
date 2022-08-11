@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import Login from './pages/login/login';
 import Register from './pages/register/register'
 import DashboarPage from "./pages/dashboard/dashboard-page";
@@ -11,24 +11,40 @@ import {useEffect, useState} from 'react';
 
 function App() {
   const location = useLocation();
-  const [route, setRoute] = useState("")
-
+  const [route, setRoute] = useState("");
+  const [userData, setUserData] = useState(null);
+  
+  // Detect Route
   useEffect (() => {
     setRoute((location.pathname).replace("/", ""));
   }, [location])
 
-  console.log(route);
+  // Set User Data
+  useEffect (() => {
+    setUserData(JSON.parse(localStorage.getItem('user')));
+  }, [localStorage.getItem('user')])
+
   return (
     <div className="App">
-      <Navbar route={route}/>
-      <Sidebar route={route}/>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/dashboard" element={<DashboarPage />} />
-        <Route path="/transaksi" element={<Transaction />} />
-        <Route path="/dompet" element={<Wallet />} />
-      </Routes>
+      {userData == null && 
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register/>}/>
+        </Routes>
+      }
+      {userData != null && 
+      <>
+        <Navbar route={route} userData={userData}/>
+        <Sidebar route={route}/>
+        <Routes>
+          {/* <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register/>}/> */}
+          <Route path="/dashboard" element={<DashboarPage />} />
+          <Route path="/transaksi" element={<Transaction />} />
+          <Route path="/dompet" element={<Wallet />} />
+        </Routes>
+      </>
+      }
     </div>
   );
 }
