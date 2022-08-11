@@ -25,11 +25,15 @@ function Login() {
         password: "",
     });
 
+    // State Data User
+  const [user, setUser] = useState(localStorage.getItem('user') || []);
+
     const submitLogin = () => {
         const data = values
         axios.post('https://be-money-management.herokuapp.com/api/login', data).then(result => {
             if(result){
                 localStorage.setItem('token', result.data.token)
+                localStorage.setItem('user', JSON.stringify(result.data.user));
                 setRedirect(true)
             }
         })

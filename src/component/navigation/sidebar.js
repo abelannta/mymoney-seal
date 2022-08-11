@@ -52,12 +52,14 @@ export default function Sidebar({route}) {
                             </div>
                             <div className='menu-title'>Help</div>
                         </div>
+                        <Link onClick={() => localStorage.removeItem('user')} to="/" style={{ textDecoration: 'none' }}>
                         <div className={'menu-box ' + ((route === "logout") && "active")}>
                             <div className='menu-icon'>
                                 <i className="fas fa-right-from-bracket"></i>
                             </div>
                             <div className='menu-title'>Log Out</div>
                         </div>
+                        </Link>
                     </div>
                 </div>
             </div>
