@@ -8,6 +8,7 @@ import Sidebar from './component/navigation/sidebar';
 import Transaction from './pages/transaction/transaction';
 import Wallet from "./pages/wallet/wallet";
 import {useEffect, useState} from 'react';
+import Setting from "./pages/setting/setting";
 
 function App() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/dashboard" element={<DashboarPage />} />
           <Route path="/transaksi" element={<Transaction />} />
           <Route path="/dompet" element={<Wallet />} />
+          <Route path="/pengaturan" element={<Setting />} />
         </Routes>
       </>
       }
