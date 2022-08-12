@@ -11,7 +11,7 @@ form{
     padding: 10px 60px;
     border-radius: 10px;
 }
-Button{
+.register-btn{
     justify-content: center;
     width: 100%;
     height: 45px;

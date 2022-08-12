@@ -112,7 +112,7 @@ function Register() {
                     />
                 ))}
 
-                <Button onClick={submitSignUp}>Daftar</Button>
+                <Button className="register-btn" onClick={submitSignUp}>Daftar</Button>
 
 
             </Form>

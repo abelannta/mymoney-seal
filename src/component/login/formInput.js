@@ -22,7 +22,7 @@ function FormInput(props) {
                 }
                 focused={focused.toString()}
             />
-            <span>{errorMessage}</span>
+            <span className="span-input">{errorMessage}</span>
         </div>
     )
 }
