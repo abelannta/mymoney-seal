@@ -11,7 +11,7 @@ form{
     padding: 20px 50px;
     border-radius: 10px;
 }
-Button{
+.login-btn{
     justify-content: center;
     width: 100%;
     height: 45px;

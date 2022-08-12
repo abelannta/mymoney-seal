@@ -104,7 +104,7 @@ function Login() {
 
 
 
-                <Button onClick={submitLogin}>Masuk</Button>
+                <Button className="login-btn" onClick={submitLogin}>Masuk</Button>
                 
                 <div className="footer">
 

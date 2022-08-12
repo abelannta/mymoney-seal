@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ModalTransaction from '../../component/transaction/modal';
 import "./transaction.css";
 
+
 export default function Transaction() {
+    const [lgShow, setLgShow] = useState(false);
+
     const data = [
         {
             id: '1',
@@ -76,10 +80,10 @@ export default function Transaction() {
                 <div className='col-10'>
                     <div className='d-flex justify-content-between'>
                         <input className="search-input mb-3" name="transaction" type="text" placeholder='Cari apa saja di Transaksi'/>
-                        <div className="add-btn mb-3">
+                        <button onClick={() => setLgShow(true)} type="button" className="add-btn mb-3" data-toggle="modal" data-target="#modalTransaksi">
                             <i className='fas fa-plus me-2'></i>
                             Tambah Transaksi
-                        </div>
+                        </button>
                     </div>
                     <div className="card bg-white border-white p-2"
                     style={{width: "18 rem", overflow: "hidden", borderRadius: 10}}>
@@ -113,6 +117,7 @@ export default function Transaction() {
                 {/* <div className='col-1'></div> */}
             </div>
         </div>
+        <ModalTransaction lgShow={lgShow} setLgShow={setLgShow}/>
     </>
   )
 }
