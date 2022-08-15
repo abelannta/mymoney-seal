@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import "./transaction.css";
 import { DatePicker } from 'rsuite';
+import moment from "moment";
+import axios from 'axios';
 
 export default function ModalTransaction({lgShow, setLgShow}) {
+    const [jenis, setJenis] = useState("");
+    const [tanggal, setTanggal] = useState("");
+    const [kategori, setKategori] = useState("");
+    const [keterangan, setKeterangan] = useState("");
+    const [jumlah, setJumlah] = useState("");
+    const [listCategories, setListCategories] = useState([]);
+
+    const getCategories = () => {
+        axios.get('https://be-money-management.herokuapp.com/api/categories')
+        .then(res => {
+            setListCategories(res.data.data);
+        })
+    }
+
+    useEffect(() => {
+        getCategories();
+    }, []);
+
   return (
     <>
     <Modal
@@ -24,7 +43,7 @@ export default function ModalTransaction({lgShow, setLgShow}) {
                     <div className='col'>
                         <div className="form-group">
                             <label for="exampleInputEmail1">Jenis Transaksi</label>
-                            <select className="form-control form-trans">
+                            <select className="form-control form-trans" onChange={(e) => setJenis(e.target.value)}>
                                 <option>Pemasukan</option>
                                 <option>Pengeluaran</option>
                             </select>
@@ -33,29 +52,25 @@ export default function ModalTransaction({lgShow, setLgShow}) {
                     <div className='col'>
                         <label for="exampleInputEmail1">Tanggal</label>
                         {/* <input className="form-control form-trans" type="text" placeholder="dd/mm/yyyy"></input> */}
-                        <DatePicker />
+                        <DatePicker format="dd-MM-yyyy" onChange={(e) => setTanggal(moment(e).format("YYYY-MM-DD"))}/>
                     </div>
                     <div className='col'>
                         <div className="form-group">
                             <label for="exampleInputEmail1">Kategori</label>
-                            <select className="form-control form-trans">
-                                <option>Makanan & Minuman</option>
-                                <option>Kesehatan</option>
-                                <option>Keluarga</option>
-                                <option>Pendidikan</option>
-                                <option>Hiburan</option>
-                                <option>Kado</option>
-                                <option>Gaji</option>
+                            <select className="form-control form-trans" onChange={(e) => setKategori(e.target.value)}>
+                                {listCategories?.map((categories, idx) => (
+                                    <option value={categories.id}>{categories.name}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
                     <div className='col'>
                         <label for="exampleInputEmail1">Keterangan</label>
-                        <input className="form-control form-trans" type="text" placeholder="Tulis Keterangan"></input>
+                        <input className="form-control form-trans" type="text" placeholder="Tulis Keterangan" onChange={(e) => setKeterangan(e.target.value)}></input>
                     </div>
                     <div className='col'>
                         <label for="exampleInputEmail1">Jumlah</label>
-                        <input className="form-control form-trans" type="text" placeholder="Jumlah Transaksi"></input>
+                        <input className="form-control form-trans" type="number" placeholder="Jumlah Transaksi" onChange={(e) => setJumlah(e.target.value)}></input>
                     </div>
                 </div>
             </form>

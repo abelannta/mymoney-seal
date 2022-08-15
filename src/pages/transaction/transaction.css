@@ -17,6 +17,27 @@
     line-height: 17px;
 }
 
+.category-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.logo-wrapper {
+    background: red !important;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+
+    border-radius: 50%;
+    color: #FFFFFF;
+}
+
 .add-btn {
     width: 150px;
     height: 35px;

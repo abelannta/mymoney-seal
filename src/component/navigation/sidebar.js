@@ -1,8 +1,28 @@
 import React from 'react';
 import "./navigation.css";
-import {Link} from 'react-router-dom';
+import {Link, Router} from 'react-router-dom';
+import axios from "axios";
 
-export default function Sidebar({route}) {
+export default function Sidebar({route, userToken}) {
+    const config = {
+        headers: { Authorization: `Bearer ${userToken.token}` }
+    };
+    const bodyParameters = {
+        key: "value"
+    };
+
+    const handleLogout = () => {
+        axios.post(
+            'https://be-money-management.herokuapp.com/api/logout',bodyParameters ,config
+        ).then(result => {
+            if(result) {
+                console.log(result);
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+            }
+        })
+    }
+
   return (
     <>
         <div className='sidebar-container'>
@@ -52,7 +72,7 @@ export default function Sidebar({route}) {
                             </div>
                             <div className='menu-title'>Help</div>
                         </div>
-                        <Link onClick={() => localStorage.removeItem('user')} to="/" style={{ textDecoration: 'none' }}>
+                        <Link onClick={() => handleLogout()} to="/" style={{ textDecoration: 'none' }}>
                         <div className={'menu-box ' + ((route === "logout") && "active")}>
                             <div className='menu-icon'>
                                 <i className="fas fa-right-from-bracket"></i>

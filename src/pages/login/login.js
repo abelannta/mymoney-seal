@@ -2,9 +2,9 @@ import { React, useState } from "react";
 import { Container, Form, Button} from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import "../login/login.css"
-import FormInput from "../../component/login/formInput"
-import LOGOMYMONEY from "../../images/login/myMoneyLogo.png"
+import "../login/login.css";
+import FormInput from "../../component/login/formInput";
+import LOGOMYMONEY from "../../images/login/myMoneyLogo.png";
 
 function Login() {
     const styleLink1 = {
@@ -27,14 +27,15 @@ function Login() {
 
     // State Data User
   const [user, setUser] = useState(localStorage.getItem('user') || []);
+  const [token, setToken] = useState(localStorage.getItem('token') || []);
 
     const submitLogin = () => {
         const data = values
         axios.post('https://be-money-management.herokuapp.com/api/login', data).then(result => {
             if(result){
-                localStorage.setItem('token', result.data.token)
+                localStorage.setItem('token', JSON.stringify(result.data.authorization));
                 localStorage.setItem('user', JSON.stringify(result.data.user));
-                setRedirect(true)
+                setRedirect(true);
             }
         })
     }
