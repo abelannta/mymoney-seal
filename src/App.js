@@ -22,8 +22,8 @@ function App() {
   }, [location])
 
   // Set User Data
-  const userItem = localStorage.getItem('user');
-  const userTkn = localStorage.getItem('token');
+  const userItem = sessionStorage.getItem('user');
+  const userTkn = sessionStorage.getItem('token');
   useEffect (() => {
     setUserData(JSON.parse(userItem));
     setToken(JSON.parse(userTkn));

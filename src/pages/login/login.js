@@ -26,17 +26,19 @@ function Login() {
     });
 
     // State Data User
-  const [user, setUser] = useState(localStorage.getItem('user') || []);
-  const [token, setToken] = useState(localStorage.getItem('token') || []);
+  const [user, setUser] = useState(sessionStorage.getItem('user') || []);
+  const [token, setToken] = useState(sessionStorage.getItem('token') || []);
 
     const submitLogin = () => {
         const data = values
         axios.post('https://be-money-management.herokuapp.com/api/login', data).then(result => {
             if(result){
-                localStorage.setItem('token', JSON.stringify(result.data.authorization));
-                localStorage.setItem('user', JSON.stringify(result.data.user));
+                sessionStorage.setItem('token', JSON.stringify(result.data.authorization));
+                sessionStorage.setItem('user', JSON.stringify(result.data.user));
                 setRedirect(true);
             }
+        }).catch(err => {
+            console.log(err);
         })
     }
 

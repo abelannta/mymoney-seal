@@ -1,6 +1,6 @@
 import React from 'react';
 import "./navigation.css";
-import {Link, Router} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 
 export default function Sidebar({route, userToken}) {
@@ -11,15 +11,19 @@ export default function Sidebar({route, userToken}) {
         key: "value"
     };
 
+    const history = useNavigate();
+
     const handleLogout = () => {
         axios.post(
             'https://be-money-management.herokuapp.com/api/logout',bodyParameters ,config
         ).then(result => {
             if(result) {
-                console.log(result);
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
+                sessionStorage.removeItem('user');
+                sessionStorage.removeItem('token');
+                history('/');
             }
+        }).catch(err => {
+            console.log(err);
         })
     }
 
@@ -72,14 +76,12 @@ export default function Sidebar({route, userToken}) {
                             </div>
                             <div className='menu-title'>Help</div>
                         </div>
-                        <Link onClick={() => handleLogout()} to="/" style={{ textDecoration: 'none' }}>
-                        <div className={'menu-box ' + ((route === "logout") && "active")}>
+                        <div onClick={() => handleLogout()} className={'menu-box ' + ((route === "logout") && "active")}>
                             <div className='menu-icon'>
                                 <i className="fas fa-right-from-bracket"></i>
                             </div>
                             <div className='menu-title'>Log Out</div>
                         </div>
-                        </Link>
                     </div>
                 </div>
             </div>
