@@ -1,0 +1,10 @@
+.myFooter{
+    background-color: blue;
+    color: white;
+    justify-content: center;
+    height: 50%;
+    margin-top: 5em;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    padding-left: 5%;
+}
