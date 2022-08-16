@@ -1,76 +1,56 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ModalTransaction from '../../component/transaction/modal';
 import "./transaction.css";
+import axios, { Axios } from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
+import TransactionNull from '../../component/transaction/transaction-null';
 
-
-export default function Transaction() {
+export default function Transaction({userToken}) {
     const [lgShow, setLgShow] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [listTransaction, setListTransaction] = useState([]);
+    const [isSubmit, setSubmit] = useState(true);
 
-    const data = [
-        {
-            id: '1',
-            category: <><img className="bg-white px-0 me-3" src="/food-category.svg" alt=""/>Makanan & Minuman</>,
-            date: '07 Aug 2022',
-            desc: 'Beli makanan warteg',
-            total: '-Rp 100.000',
-        },
-        {
-            id: '2',
-            category: <><img className="bg-white px-0 me-3" src="/health-category.svg" alt=""/>Kesehatan</>,
-            date: '07 Aug 2022',
-            desc: 'Beli obat sakit kepala',
-            total: '-Rp 250.000',
-        },
-        {
-            id: '3',
-            category: <><img className="bg-white px-0 me-3" src="/family-category.svg" alt=""/>Keluarga</>,
-            date: '07 Aug 2022',
-            desc: 'Langganan Netflix',
-            total: '-Rp 500.000',
-        },
-        {
-            id: '4',
-            category: <><img className="bg-white px-0 me-3" src="/food-category.svg" alt=""/>Makanan & Minuman</>,
-            date: '07 Aug 2022',
-            desc: 'Beli makanan warteg',
-            total: '-Rp 100.000',
-        },
-        {
-            id: '5',
-            category: <><img className="bg-white px-0 me-3" src="/health-category.svg" alt=""/>Kesehatan</>,
-            date: '07 Aug 2022',
-            desc: 'Beli obat sakit kepala',
-            total: '-Rp 250.000',
-        },
-        {
-            id: '6',
-            category: <><img className="bg-white px-0 me-3" src="/family-category.svg" alt=""/>Keluarga</>,
-            date: '07 Aug 2022',
-            desc: 'Langganan Netflix',
-            total: '-Rp 500.000',
-        },
-        {
-            id: '7',
-            category: <><img className="bg-white px-0 me-3" src="/food-category.svg" alt=""/>Makanan & Minuman</>,
-            date: '07 Aug 2022',
-            desc: 'Beli makanan warteg',
-            total: '-Rp 100.000',
-        },
-        {
-            id: '8',
-            category: <><img className="bg-white px-0 me-3" src="/health-category.svg" alt=""/>Kesehatan</>,
-            date: '07 Aug 2022',
-            desc: 'Beli obat sakit kepala',
-            total: '-Rp 250.000',
-        },
-        {
-            id: '9',
-            category: <><img className="bg-white px-0 me-3" src="/family-category.svg" alt=""/>Keluarga</>,
-            date: '07 Aug 2022',
-            desc: 'Langganan Netflix',
-            total: '-Rp 500.000',
-        },
-    ];
+    const config = {
+        headers: { Authorization: `Bearer ${userToken.token}` }
+    };
+    const bodyParameters = {
+        key: "value"
+    };
+
+    const getTransaction = () => {
+        setLoading(true);
+        axios.get(
+            'https://be-money-management.herokuapp.com/api/transcations', config
+        ).then(result => {
+            if(result) {
+                console.log(result)
+                setListTransaction(result.data.data)
+            }
+        }).catch(err => {
+            console.log(err)
+        });
+        setLoading(false);
+    };
+
+    const handleDeleteTransaction = (id_transaction) => {
+        axios.delete(
+            `https://be-money-management.herokuapp.com/api/transcations/destroy/${id_transaction}`
+        ).then(result => {
+            if(result) {
+                console.log(result);
+                setSubmit(!isSubmit);
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    console.log(listTransaction);
+
+    useEffect(() => {
+        getTransaction();
+    }, [isSubmit])
 
   return (
     <>
@@ -88,36 +68,56 @@ export default function Transaction() {
                     <div className="card bg-white border-white p-2"
                     style={{width: "18 rem", overflow: "hidden", borderRadius: 10}}>
                         <div className="card-body bg-white">
-                            <table className="table">
-                                <tr>
-                                    <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Kategori</td>
-                                    <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Tanggal</td>
-                                    <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Keterangan</td>
-                                    <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Jumlah</td>
-                                    <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Aksi</td>
-                                </tr>
-                                {data?.map((item) => (
-                                    <>
-                                        <tr>
-                                            <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.category}</td>
-                                            <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.date}</td>
-                                            <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.desc}</td>
-                                            <td className="bg-white" style={{fontWeight: 600, color: "#FF4343", fontSize: 10}}>{item.total}</td>
-                                            <td className="bg-white btn-wrapper" style={{fontWeight: 600, color: "#000000", fontSize: 10}}>
-                                                <div className='lihat trans-btn'>Lihat</div>
-                                                <div className='hapus trans-btn'>Hapus</div>
-                                            </td>
-                                        </tr>
-                                    </>
-                                ))}
-                            </table>
+                            {(listTransaction.length === 0) && <TransactionNull />}
+                            {(listTransaction.length !== 0) && <>
+                                {loading ? (
+                                    <div className="d-flex align-items-center justify-content-center my-5">
+                                        <Spinner animation="border" variant="primary" />
+                                    </div>
+                                ) : (
+                                <table className="table">
+                                    <tr>
+                                        <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Kategori</td>
+                                        <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Tanggal</td>
+                                        <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Keterangan</td>
+                                        <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Jumlah</td>
+                                        <td className="bg-white fw-bold" style={{color: "#929EAE", fontSize: 8}}>Aksi</td>
+                                    </tr>
+                                    {listTransaction?.map((item) => (
+                                        <>
+                                            <tr>
+                                                <td className='category-wrapper' style={{fontWeight: 600, fontSize: 10}}>
+                                                    <img src={`https://be-money-management.herokuapp.com${item.category.img}`} alt="" />
+                                                    {item.category.name}
+                                                </td>
+                                                <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.date}</td>
+                                                <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.note}</td>
+                                                <td className="bg-white" style={{fontWeight: 600, color: (item.type === "pengeluaran") ? "#FF4343" : (item.type === "pemasukan") ? "#3CCC4B" : "", fontSize: 10}}>
+                                                    {(item.type === "pengeluaran") ? `- Rp ${item.amount}` : (item.type === "pemasukan") ? `+ Rp ${item.amount}` : item.amount}
+                                                </td>
+                                                <td className="bg-white btn-wrapper" style={{fontWeight: 600, color: "#000000", fontSize: 10}}>
+                                                    <div className='lihat trans-btn'>Lihat</div>
+                                                    <div className='hapus trans-btn' onClick={() => handleDeleteTransaction(item.id)}>Hapus</div>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                                )}
+                            </>}
                         </div>
                     </div>
                 </div>
                 {/* <div className='col-1'></div> */}
             </div>
         </div>
-        <ModalTransaction lgShow={lgShow} setLgShow={setLgShow}/>
+        <ModalTransaction 
+            lgShow={lgShow} 
+            setLgShow={setLgShow} 
+            userToken={userToken} 
+            isSubmit={isSubmit} 
+            setSubmit={setSubmit}
+        />
     </>
   )
 }

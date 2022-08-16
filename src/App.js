@@ -14,6 +14,7 @@ function App() {
   const location = useLocation();
   const [route, setRoute] = useState("");
   const [userData, setUserData] = useState(null);
+  const [userToken, setToken] = useState(null);
   
   // Detect Route
   useEffect (() => {
@@ -21,9 +22,12 @@ function App() {
   }, [location])
 
   // Set User Data
+  const userItem = sessionStorage.getItem('user');
+  const userTkn = sessionStorage.getItem('token');
   useEffect (() => {
-    setUserData(JSON.parse(localStorage.getItem('user')));
-  }, [localStorage.getItem('user')])
+    setUserData(JSON.parse(userItem));
+    setToken(JSON.parse(userTkn));
+  }, [userItem, userTkn])
 
   return (
     <div className="App">
@@ -35,13 +39,13 @@ function App() {
       }
       {userData != null && 
       <>
-        <Navbar route={route} userData={userData}/>
-        <Sidebar route={route}/>
+        <Navbar route={route} userData={userData} />
+        <Sidebar route={route} userToken={userToken}/>
         <Routes>
           {/* <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register/>}/> */}
           <Route path="/dashboard" element={<DashboarPage />} />
-          <Route path="/transaksi" element={<Transaction />} />
+          <Route path="/transaksi" element={<Transaction userToken={userToken} />} />
           <Route path="/dompet" element={<Wallet />} />
           <Route path="/pengaturan" element={<Setting />} />
         </Routes>
