@@ -2,9 +2,11 @@ import React from "react";
 import "../../home/footer/footer.css"
 import FOOTERBRAND from "../../../images/footer/footer-brand.png"
 import DOWNLOAD from "../../../images/footer/download.png"
+import { Container } from "react-bootstrap";
 
 function Footer(){
     return(
+        <div className="container-fluid myFooter">
         <div className="myFooter">
             <div className="row justify-content-center">
                 <div className="col-md-3">
@@ -38,6 +40,7 @@ function Footer(){
 
                 </div>
             </div>   
+        </div>
         </div>
     )
 }

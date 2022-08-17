@@ -5,8 +5,8 @@
     justify-content: center;
     width: 100%;
     padding-left: 100px;
-    padding-right: 150px;
     padding-top: 4cm;
+    display: inline-block;
 }
 .loginBut{
     width: 200px;
@@ -28,7 +28,6 @@
 .myCard{
     margin-top: 1cm;
     width: 25em;
-    margin-right: 1em;
     margin-left: 1em;
     text-align: center;
     justify-content: center;
