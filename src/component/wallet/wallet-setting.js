@@ -64,7 +64,7 @@ const WalletSetting = () => {
                                     <h5 className="card-title m-0 mb-3" style={{fontSize: 14, color: "#A6A6A6"}}>
                                         Nama Dompet
                                     </h5>
-                                    <input onChange={handleChange} value={dataWallet.name} name="name" type="text"
+                                    <input onChange={handleChange} value={dataWallet?.name} name="name" type="text"
                                            className="form-control"
                                            style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
                                 </div>
@@ -75,7 +75,7 @@ const WalletSetting = () => {
                                     <h5 className="card-title m-0 mb-3" style={{fontSize: 14, color: "#A6A6A6"}}>
                                         Saldo Awal
                                     </h5>
-                                    <input onChange={handleChange} value={dataWallet.initialbalance}
+                                    <input onChange={handleChange} value={dataWallet?.initialbalance}
                                            name="initialbalance" type="text" className="form-control"
                                            style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
                                 </div>

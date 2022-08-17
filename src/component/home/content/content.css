@@ -5,7 +5,6 @@
     justify-content: center;
     width: 100%;
     padding-left: 100px;
-    padding-right: 150px;
     padding-top: 4cm;
 }
 .loginBut{
@@ -22,13 +21,13 @@
 .card-content{
     justify-content: center;
     text-align: center;
-    margin-top: 2cm;
+    margin-top: 4cm;
+    margin-bottom: 1cm;
 }
 
 .myCard{
     margin-top: 1cm;
     width: 25em;
-    margin-right: 1em;
     margin-left: 1em;
     text-align: center;
     justify-content: center;

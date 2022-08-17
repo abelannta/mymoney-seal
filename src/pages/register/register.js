@@ -81,18 +81,18 @@ function Register() {
     return (
         <Container className="RegisterPage" fluid="true">
             <Form onSubmit={onRegister}>
-                {
+                {/* {
                     alert && (
                         <div className="alert alert-primary">
                             <p>User berhasil bisa didaftarkan!</p>
                         </div>
                     )
-                }
-                {/* {
-                    redirect && (
-                        <Navigate to="/" />
-                    )
                 } */}
+                {
+                    redirect && (
+                        <Navigate to="/login" />
+                    )
+                }
                 <div className="back-button">
                     <Link style={styleLink} to="/login">
                         <FiArrowLeft /> Masuk

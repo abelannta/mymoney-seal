@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, Row, Col, Button, Card} from "react-bootstrap"
 import "../../home/content/content.css"
+import { Link } from "react-router-dom";
 import CONTENTPICT from "../../../images/home/content-picture.png"
 import CONTENT1 from "../../../images/home/content1.png"
 import CONTENT2 from "../../../images/home/content2.png"
@@ -11,12 +12,12 @@ function Content(){
         <Container>
             <Row className="home-content">
                 <Col className="content1">
-                <h1>Mengatur Keuangan Dengan Mudah</h1>
+                <h3>Mengatur Keuangan Dengan Mudah</h3>
                 <br></br>
                 <p>Manage Keuanganmu lebih mudah dimanapun dan kapanpun</p>
                 <br></br>
-                <Button href="/login" className="loginBut">Masuk</Button> 
-                <Button href="/register" className="registerBut" variant="outline-primary">Daftar</Button>
+                <Link to="/login"><Button className="loginBut">Masuk</Button></Link>
+                <Link to="/register"><Button className="registerBut" variant="outline-primary">Daftar</Button></Link>
                 </Col>
                 <Col className="content2">
                 <img src={CONTENTPICT} />

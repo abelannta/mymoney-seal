@@ -1,0 +1,12 @@
+.body{
+    background-image: url(/src/images/home/background1.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 400px;
+}
+.backgroundAdd{
+    background-image: url(/src/images/home/background2.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 200px;
+}
