@@ -22,7 +22,8 @@
 .card-content{
     justify-content: center;
     text-align: center;
-    margin-top: 2cm;
+    margin-top: 4cm;
+    margin-bottom: 1cm;
 }
 
 .myCard{

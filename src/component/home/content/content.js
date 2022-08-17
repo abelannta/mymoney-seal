@@ -11,7 +11,7 @@ function Content(){
         <Container>
             <Row className="home-content">
                 <Col className="content1">
-                <h1>Mengatur Keuangan Dengan Mudah</h1>
+                <h3>Mengatur Keuangan Dengan Mudah</h3>
                 <br></br>
                 <p>Manage Keuanganmu lebih mudah dimanapun dan kapanpun</p>
                 <br></br>
