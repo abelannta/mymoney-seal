@@ -32,7 +32,7 @@ const MyWallet = () => {
                     <div className="row">
                         <div className="col-5">
                             <h5 className="card-title fw-bold m-0" style={{fontSize: 18, color: "#1F1F1F"}}>
-                                Rp {dataWallet.balance}</h5>
+                                Rp {dataWallet?.balance}</h5>
                         </div>
                         <div className="col-7">
                             <div className="d-flex justify-content-between">
