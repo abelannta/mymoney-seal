@@ -1,4 +1,54 @@
+import axios from "axios";
+import {useEffect, useState} from "react";
+
 const WalletSetting = () => {
+    const [dataWallet, setDataWallet] = useState([])
+
+    const getWallet = async () => {
+        try {
+            await axios({
+                method: 'GET',
+                url: 'https://be-money-management.herokuapp.com/api/wallets',
+                headers: {Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token')).token}`},
+            }).then((res) => {
+                setDataWallet(res.data.data[(res.data.data).length - 1])
+            });
+        } catch (error) {
+
+        }
+    };
+
+    const postWallet = async () => {
+        try {
+            await axios({
+                method: 'POST',
+                url: 'https://be-money-management.herokuapp.com/api/wallets/store',
+                headers: {Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token')).token}`},
+                data: {name: dataWallet.name, initialbalance: dataWallet.initialbalance},
+            }).then((res) => {
+                getWallet()
+                alert("Berhasil memperbarui dompet!")
+            });
+        } catch (error) {
+
+        }
+    };
+
+    const handleChange = (event) => {
+        let typeOfValue = event.currentTarget.value
+        let name = event.target.name
+
+        setDataWallet({...dataWallet, [name]: typeOfValue})
+    }
+
+    const handleWalletSubmit = () => {
+        postWallet()
+    }
+
+    useEffect(() => {
+        getWallet()
+    }, [])
+
     return (
         <>
             <div className="card p-2 card-shadow"
@@ -14,7 +64,9 @@ const WalletSetting = () => {
                                     <h5 className="card-title m-0 mb-3" style={{fontSize: 14, color: "#A6A6A6"}}>
                                         Nama Dompet
                                     </h5>
-                                    <input type="text" className="form-control" style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
+                                    <input onChange={handleChange} value={dataWallet.name} name="name" type="text"
+                                           className="form-control"
+                                           style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
                                 </div>
                             </div>
                             <div className="col-6"/>
@@ -23,7 +75,9 @@ const WalletSetting = () => {
                                     <h5 className="card-title m-0 mb-3" style={{fontSize: 14, color: "#A6A6A6"}}>
                                         Saldo Awal
                                     </h5>
-                                    <input type="text" className="form-control" style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
+                                    <input onChange={handleChange} value={dataWallet.initialbalance}
+                                           name="initialbalance" type="text" className="form-control"
+                                           style={{borderRadius: 4, backgroundColor: "#FAFAFA"}}/>
                                 </div>
                             </div>
                             <div className="col-6">
@@ -36,14 +90,22 @@ const WalletSetting = () => {
                                            value="IDR" disabled/>
                                 </div>
                             </div>
-                            <div className="col-6">
-                                <button type="submit" className="btn btn-default"
-                                        style={{backgroundColor: "#3F8DFD", height: 44, color: "white", borderRadius: 4}}>
-                                    Simpan Pengaturan
-                                </button>
-                            </div>
                         </div>
                     </form>
+                    <div className="row">
+                        <div className="col-6">
+                            <button className="btn btn-default" onClick={handleWalletSubmit}
+                                    style={{
+                                        backgroundColor: "#3F8DFD",
+                                        height: 44,
+                                        color: "white",
+                                        borderRadius: 4,
+                                        width: "100%"
+                                    }}>
+                                Simpan Pengaturan
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
