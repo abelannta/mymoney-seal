@@ -1,7 +1,8 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import "../../home/navbar/navbar-home.css"
-import NAVBARBRAND from "../../../images/home/navbar-brand.png"
+import "../../home/navbar/navbar-home.css";
+import { Link } from "react-router-dom";
+import NAVBARBRAND from "../../../images/home/navbar-brand.png";
 
 function NavbarHome(){
     return(
@@ -17,8 +18,8 @@ function NavbarHome(){
                 <Nav>
                   <ul>
                     <li><a href="#">Bantuan</a></li>
-                    <li> <a href="#">Tentang Kami</a></li>
-                    <li> <a><Button href="/login">Masuk</Button></a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><Link to="/login"><Button>Masuk</Button></Link></li>
                   </ul>
                 </Nav>
               </Navbar.Collapse>
