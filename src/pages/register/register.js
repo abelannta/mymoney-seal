@@ -94,7 +94,7 @@ function Register() {
                     )
                 } */}
                 <div className="back-button">
-                    <Link style={styleLink} to="/">
+                    <Link style={styleLink} to="/login">
                         <FiArrowLeft /> Masuk
                     </Link>
                 </div>

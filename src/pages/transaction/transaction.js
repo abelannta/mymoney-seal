@@ -24,8 +24,7 @@ export default function Transaction({userToken}) {
             'https://be-money-management.herokuapp.com/api/transcations', config
         ).then(result => {
             if(result) {
-                console.log(result)
-                setListTransaction(result.data.data)
+                setListTransaction(result.data.data);
             }
         }).catch(err => {
             console.log(err)
@@ -38,15 +37,12 @@ export default function Transaction({userToken}) {
             `https://be-money-management.herokuapp.com/api/transcations/destroy/${id_transaction}`
         ).then(result => {
             if(result) {
-                console.log(result);
                 setSubmit(!isSubmit);
             }
         }).catch(err => {
             console.log(err);
         })
     }
-
-    console.log(listTransaction);
 
     useEffect(() => {
         getTransaction();
@@ -85,9 +81,9 @@ export default function Transaction({userToken}) {
                                     </tr>
                                     {listTransaction?.map((item) => (
                                         <>
-                                            <tr>
-                                                <td className='category-wrapper' style={{fontWeight: 600, fontSize: 10}}>
-                                                    <img src={`https://be-money-management.herokuapp.com${item.category.img}`} alt="" />
+                                            <tr className='row-wrapper'>
+                                                <td className='category-wrapper bg-white' style={{fontWeight: 600, fontSize: 10}}>
+                                                    <img src={item.category.image} className="img-category" alt="" />
                                                     {item.category.name}
                                                 </td>
                                                 <td className="bg-white" style={{fontWeight: 600, color: "#1B212D", fontSize: 10}}>{item.date}</td>
@@ -95,9 +91,11 @@ export default function Transaction({userToken}) {
                                                 <td className="bg-white" style={{fontWeight: 600, color: (item.type === "pengeluaran") ? "#FF4343" : (item.type === "pemasukan") ? "#3CCC4B" : "", fontSize: 10}}>
                                                     {(item.type === "pengeluaran") ? `- Rp ${item.amount}` : (item.type === "pemasukan") ? `+ Rp ${item.amount}` : item.amount}
                                                 </td>
-                                                <td className="bg-white btn-wrapper" style={{fontWeight: 600, color: "#000000", fontSize: 10}}>
-                                                    <div className='lihat trans-btn'>Lihat</div>
-                                                    <div className='hapus trans-btn' onClick={() => handleDeleteTransaction(item.id)}>Hapus</div>
+                                                <td className="bg-white">
+                                                    <div className="btn-wrapper" style={{fontWeight: 600, color: "#000000", fontSize: 10}}>
+                                                        <div className='lihat trans-btn'>Lihat</div>
+                                                        <div className='hapus trans-btn' onClick={() => handleDeleteTransaction(item.id)}>Hapus</div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </>

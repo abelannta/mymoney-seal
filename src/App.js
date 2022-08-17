@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import Home from './pages/home/home';
 import Login from './pages/login/login';
 import Register from './pages/register/register'
 import DashboarPage from "./pages/dashboard/dashboard-page";
@@ -33,7 +34,8 @@ function App() {
     <div className="App">
       {userData == null && 
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>}/>
         </Routes>
       }

@@ -19,18 +19,17 @@ export default function ModalTransaction({lgShow, setLgShow, userToken, isSubmit
     const getCategories = (jenis) => {
         axios.get(`https://be-money-management.herokuapp.com/api/categories?type=${jenis}`)
         .then(res => {
-            console.log(res.data);
             setListCategories(res.data.data);
         })
     }
 
     useEffect(() => {
         if (jenis === "pemasukan") {
-            setKategori("1");
+            setKategori("14");
         };
 
         if (jenis === "pengeluaran") {
-            setKategori("4");
+            setKategori("1");
         }
     }, [jenis]);
 
@@ -51,7 +50,6 @@ export default function ModalTransaction({lgShow, setLgShow, userToken, isSubmit
             'https://be-money-management.herokuapp.com/api/transcations/store', data, config
         ).then(result => {
             if(result) {
-                console.log(result);
                 setSubmit(!isSubmit);
                 setTransSuccess(true);
                 setTimeout(() => {
