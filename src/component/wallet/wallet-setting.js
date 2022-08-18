@@ -12,6 +12,7 @@ const WalletSetting = () => {
                 headers: {Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token')).token}`},
             }).then((res) => {
                 setDataWallet(res.data.data[(res.data.data).length - 1])
+                console.log(res.data.data[(res.data.data).length - 1])
             });
         } catch (error) {
 
@@ -26,11 +27,10 @@ const WalletSetting = () => {
                 headers: {Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('token')).token}`},
                 data: {name: dataWallet.name, initialbalance: dataWallet.initialbalance},
             }).then((res) => {
-                getWallet()
-                alert("Berhasil memperbarui dompet!")
+                window.location.reload()
             });
         } catch (error) {
-
+            alert("Nama Dompet harus diisi!")
         }
     };
 

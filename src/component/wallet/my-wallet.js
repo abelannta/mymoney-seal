@@ -2,7 +2,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 const MyWallet = () => {
-    const [dataWallet, setDataWallet] = useState([])
+    const [dataWallet, setDataWallet] = useState({
+        name: "",
+        initialbalance: 0,
+        balance: 0,
+    })
 
     const getWallet = async () => {
         try {
